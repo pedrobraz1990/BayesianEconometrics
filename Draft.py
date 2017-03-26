@@ -3,7 +3,7 @@ from numpy.linalg import inv
 import pandas as pd
 import datetime as dt
 
-from KalmanFilter1 import *
+from KalmanFilter import *
 
 m = 2
 p = 4
@@ -40,7 +40,11 @@ y = pd.concat(yt, axis=1).T.reset_index(drop=True)
 mut[0] = pd.DataFrame(mut[0])
 mut = pd.concat(mut, axis=1).T.reset_index(drop=True)
 
-
+nny = y
+probNan = 0.00
+for i in nny.index:
+    ran = np.random.uniform(size=nny.iloc[i].shape)
+    nny.iloc[i][ran < probNan] = np.nan
 
 kf = KalmanFilter(y,
                   Z,
@@ -49,6 +53,7 @@ kf = KalmanFilter(y,
                   Q,
                   pd.DataFrame(np.array([0,0]).reshape(m,1)),
                   pd.DataFrame(np.diag(np.array([1,1]))),
-                  R)
+                  R,
+                  nStates=2)
 
 kf.runFilter()

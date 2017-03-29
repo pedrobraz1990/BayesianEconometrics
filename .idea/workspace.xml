@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18a16ee7-a1fc-4311-abf7-a157c89a401f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KalmanFilter_Cython.pyx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KalmanFilter_Cython2.pyx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MH.pyx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Local Level Model-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Local Level Model-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KalmanFilter.py" afterPath="$PROJECT_DIR$/KalmanFilter.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Local Level Model.ipynb" afterPath="$PROJECT_DIR$/Local Level Model.ipynb" />
     </list>
     <ignored path="Bayesian Econometrics.iws" />
@@ -46,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KalmanFilter.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="KalmanFilter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/KalmanFilter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+            <state relative-caret-position="1768">
+              <caret line="104" column="46" selection-start-line="104" selection-start-column="46" selection-end-line="104" selection-end-column="46" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -58,10 +64,40 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="KalmanFilter_Cython.pyx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/KalmanFilter_Cython.pyx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KalmanFilter_Cython2.pyx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/KalmanFilter_Cython2.pyx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MH.pyx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MH.pyx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Draft.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Draft.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
+            <state relative-caret-position="570">
               <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -89,7 +125,12 @@
         <option value="$PROJECT_DIR$/KalmanFilter2.py" />
         <option value="$PROJECT_DIR$/KalmanFilter3.py" />
         <option value="$PROJECT_DIR$/Draft.py" />
+        <option value="$PROJECT_DIR$/KalmanFilter_Numba.py" />
+        <option value="$PROJECT_DIR$/MH.py" />
+        <option value="$PROJECT_DIR$/MH.pyx" />
         <option value="$PROJECT_DIR$/KalmanFilter.py" />
+        <option value="$PROJECT_DIR$/KalmanFilter_Cython.pyx" />
+        <option value="$PROJECT_DIR$/KalmanFilter_Cython2.pyx" />
       </list>
     </option>
   </component>
@@ -154,8 +195,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="O:\SALES\Fundos de Mercado\Notebooks\Bayesian Econometrics" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="Python.Draft">
@@ -532,9 +573,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/KalmanFilter_Numba.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1158">
+          <caret line="173" column="20" selection-start-line="173" selection-start-column="20" selection-end-line="173" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Draft.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
+        <state relative-caret-position="570">
           <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -544,11 +593,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/KalmanFilter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        <state relative-caret-position="1768">
+          <caret line="104" column="46" selection-start-line="104" selection-start-column="46" selection-end-line="104" selection-end-column="46" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MH.pyx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KalmanFilter_Cython.pyx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KalmanFilter_Cython2.pyx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>

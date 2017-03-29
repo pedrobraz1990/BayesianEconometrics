@@ -3,7 +3,7 @@ from numpy.linalg import inv
 from numpy.linalg import det
 import pandas as pd
 import datetime as dt
-
+cimport numpy as np
 
 class KalmanFilter():
     #         """
@@ -31,7 +31,7 @@ class KalmanFilter():
     #         """
 
     def __init__(self, y, Z, H, T, Q, a1, P1, R, nStates, performChecks = True):
-
+        print("jow2")
         self.yindex = y.index
         self.ycols = y.columns
         self.p = y.shape[1]
@@ -79,7 +79,7 @@ class KalmanFilter():
 
     def runFilter(self, ):
         # Implemented with non time varying coefficients
-
+        cdef int i
         for i in range(0, self.n - 1):
 
             if self.ind[i] == 0:

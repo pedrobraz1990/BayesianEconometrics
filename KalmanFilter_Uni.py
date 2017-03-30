@@ -87,13 +87,27 @@ class KalmanFilter():
         # Implemented with non time varying coefficients
         # Maybe check for pre transposal solutions
 
+
+
         for t in range(0, self.n):
+            ind = ~np.isnan(self.y[t,:])
             for i in range(0,self.p): # later on change to Pt
-                self.v[t, i] = self.y[t, i] - self.Z[i, :].reshape((1,self.m)).dot(self.a[t, i, :].T) #a should be mx1
-                self.F[t, i] = self.Z[i, :].reshape((1,self.m)).dot(self.P[t, i, :, :]).dot(self.Z[i, :]) + self.H[i, i]
-                self.K[t, i, :] = self.P[t, i, :, :].dot(self.Z[i, :]) * self.F[t, i] ** (-1)
-                self.a[t, i+1, :] = self.a[t, i, :] + self.K[t, i, :] * self.v[t, i]
-                self.P[t, i+1, :, :] = self.P[t, i, :, :] - (self.K[t, i, :] * self.F[t, i]).reshape((self.m,1)).dot(self.K[t, i].reshape((1,self.m)))
+                if ind[i]:
+                    self.v[t, i] = self.y[t, i] - self.Z[i, :].reshape((1,self.m)).dot(self.a[t, i, :].T) #a should be mx1
+                    self.F[t, i] = self.Z[i, :].reshape((1,self.m)).dot(self.P[t, i, :, :]).dot(self.Z[i, :]) + self.H[i, i]
+                    self.K[t, i, :] = self.P[t, i, :, :].dot(self.Z[i, :]) * self.F[t, i] ** (-1)
+                    self.a[t, i+1, :] = self.a[t, i, :] + self.K[t, i, :] * self.v[t, i]
+                    self.P[t, i+1, :, :] = self.P[t, i, :, :] - (self.K[t, i, :] * self.F[t, i]).reshape((self.m,1)).dot(self.K[t, i].reshape((1,self.m)))
+                else:
+                    # Setting all Z's to zeros
+                    self.v[t, i] = np.zeros(self.v[t, i].shape)
+                    self.F[t, i] = self.H[
+                        i, i]
+                    self.K[t, i, :] = np.zeros(self.K[t, i, :].shape)
+                    self.a[t, i + 1, :] = self.a[t, i, :] + self.K[t, i, :] * self.v[t, i]
+                    self.P[t, i + 1, :, :] = self.P[t, i, :, :] - (self.K[t, i, :] * self.F[t, i]).reshape(
+                        (self.m, 1)).dot(self.K[t, i].reshape((1, self.m)))
+
             self.a[t+1, 0, :] = self.T.dot(self.a[t, i+1, :])
             self.P[t+1, 0, :, :] = self.T.dot(self.P[t, i+1]).dot(self.TT) + self.R.dot(self.Q).dot(self.RT)
             # self.yhat[t,:] = self.Z.dot(self.a[t,1,:]) # ERRADO

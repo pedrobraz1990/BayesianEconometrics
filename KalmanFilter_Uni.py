@@ -96,6 +96,9 @@ class KalmanFilter():
                 self.P[t, i+1, :, :] = self.P[t, i, :, :] - (self.K[t, i, :] * self.F[t, i]).reshape((self.m,1)).dot(self.K[t, i].reshape((1,self.m)))
             self.a[t+1, 0, :] = self.T.dot(self.a[t, i+1, :])
             self.P[t+1, 0, :, :] = self.T.dot(self.P[t, i+1]).dot(self.TT) + self.R.dot(self.Q).dot(self.RT)
+            # self.yhat[t,:] = self.Z.dot(self.a[t,1,:]) # ERRADO
+            self.yhat[t, :] = self.Z.dot(self.a[t, 0, :])
+
 
             #     Z=(P x M) Pt=(MxM)
 
@@ -171,7 +174,10 @@ class KalmanFilter():
         if self.export is True:
 
             # self.a = np.empty((self.n + 1, self.p + 1, self.m))
-            self.states = pd.DataFrame(self.a[:, 1, :])
+            # self.states = pd.DataFrame(self.a[:, 1, :]) # ERRADO ACHO
+            self.states = pd.DataFrame(self.a[:, 0, :])
+            self.yhat = pd.DataFrame(self.yhat)
+            self.y = pd.DataFrame(self.y)
         # self.yhat = pd.DataFrame(np.concatenate(self.yhat, axis=1)).T
         # self.y = pd.DataFrame(self.y)
 

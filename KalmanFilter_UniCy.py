@@ -3,6 +3,7 @@ from numpy.linalg import inv
 from numpy.linalg import det
 import pandas as pd
 import datetime as dt
+cimport numpy as np
 
 
 class KalmanFilter():
@@ -87,7 +88,28 @@ class KalmanFilter():
         # Implemented with non time varying coefficients
         # Maybe check for pre transposal solutions
 
+
+        # self.yhat = np.empty((self.n,self.p))
+        # self.Z = np.array(Z.astype(float)) # (PxM) we'll drop t
+        # self.H = np.array(H.astype(float))
+        # self.T = np.array(T.astype(float)) # Should be M x M
+        # self.Q = np.array(Q.astype(float)) # (RxR)
+        # self.a = np.empty((self.n + 1,self.p + 1,self.m)) #each alpha t,i is mx1
+        # self.a[0, 0, :] = np.array(a1.astype(float)).ravel() #TODO Check a1 dimension
+        # self.P = np.empty((self.n + 1, self.p + 1, self.m, self.m))
+        # self.P[0, 0, :, :] = np.array(P1.astype(float))
+        # self.v = np.empty((self.n,self.p))
+        # self.F = np.empty((self.n,self.p))
+        # self.K = np.empty((self.n,self.p, self.m))
+        # self.ZT = Z.T  # To avoid transposing it several times
+        # self.TT = self.T.T  # To avoid transposing it several times
+        # self.R = np.array(R) # (MxR)
+        # self.RT = self.R.T
+        # self.ranFilter = False
+
         cdef int i,t
+
+        cdef np.ndarray[double, ndim=1] y,yhat
 
         for t in range(0, self.n):
             ind = ~np.isnan(self.y[t,:])

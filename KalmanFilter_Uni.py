@@ -30,7 +30,7 @@ class KalmanFilter():
 
     #         """
 
-    def __init__(self, y, Z, H, T, Q, a1, P1, R, nStates, performChecks = True):
+    def __init__(self, y, Z, H, T, Q, a1, P1, R, nStates, performChecks = True, export = True):
 
         self.yindex = y.index
         self.ycols = y.columns
@@ -39,6 +39,7 @@ class KalmanFilter():
         self.y = np.array(y) # Y = (n x P)
         self.m = nStates
 
+        self.export = export
         # Checks
         if performChecks:
             if Z.shape != (self.p,self.m):
@@ -61,51 +62,60 @@ class KalmanFilter():
         ind[np.isnan(self.y).all(axis=1)] = 2  # All NaNs
         self.ind = ind
 
+        # t goes from 1 to n
+        # i goes from 1 to p (or pt)
+
         self.yhat = np.empty((self.n,self.p))
-        self.Z = np.array(Z.astype(float))
+        self.Z = np.array(Z.astype(float)) # (PxM) we'll drop t
         self.H = np.array(H.astype(float))
-        self.T = np.array(T.astype(float))
-        self.Q = np.array(Q.astype(float))
-        self.a = np.empty((self.m,self.n))
-        self.a[:,0] = np.array(a1.astype(float))
-        self.P = np.empty((self.n,self.m,self.m))
-        self.P[:,:,0] = np.array(P1.astype(float))
+        self.T = np.array(T.astype(float)) # Should be M x M
+        self.Q = np.array(Q.astype(float)) # (RxR)
+        self.a = np.empty((self.n + 1,self.p + 1,self.m)) #each alpha t,i is mx1
+        self.a[0, 0, :] = np.array(a1.astype(float)).ravel() #TODO Check a1 dimension
+        self.P = np.empty((self.n + 1, self.p + 1, self.m, self.m))
+        self.P[0, 0, :, :] = np.array(P1.astype(float))
         self.v = np.empty((self.n,self.p))
-        self.F = np.empty((self.n,self.p, self.p))
-        self.Kt = np.empty((self.m, self.p))
+        self.F = np.empty((self.n,self.p))
+        self.K = np.empty((self.n,self.p, self.m))
         self.ZT = Z.T  # To avoid transposing it several times
         self.TT = self.T.T  # To avoid transposing it several times
-        self.R = np.array(R)
+        self.R = np.array(R) # (MxR)
         self.RT = self.R.T
         self.ranFilter = False
 
     def runFilter(self, ):
         # Implemented with non time varying coefficients
+        # Maybe check for pre transposal solutions
 
         for t in range(0, self.n):
-            for i in range(0,self.p):
-                self.v[t,i] = self.y[t,i] - self.Z[t,i].dot(self.a[:,t])
-                self.F[t,i,:] = self.Z[i,:].dot(self.P[t,i,:]).dot(self.Z[i,:].T) + self.H[i,i]
-                
+            for i in range(0,self.p): # later on change to Pt
+                self.v[t, i] = self.y[t, i] - self.Z[i, :].reshape((1,self.m)).dot(self.a[t, i, :].T) #a should be mx1
+                self.F[t, i] = self.Z[i, :].reshape((1,self.m)).dot(self.P[t, i, :, :]).dot(self.Z[i, :]) + self.H[i, i]
+                self.K[t, i, :] = self.P[t, i, :, :].dot(self.Z[i, :]) * self.F[t, i] ** (-1)
+                self.a[t, i+1, :] = self.a[t, i, :] + self.K[t, i, :] * self.v[t, i]
+                self.P[t, i+1, :, :] = self.P[t, i, :, :] - (self.K[t, i, :] * self.F[t, i]).reshape((self.m,1)).dot(self.K[t, i].reshape((1,self.m)))
+            self.a[t+1, 0, :] = self.T.dot(self.a[t, i+1, :])
+            self.P[t+1, 0, :, :] = self.T.dot(self.P[t, i+1]).dot(self.TT) + self.R.dot(self.Q).dot(self.RT)
+
             #     Z=(P x M) Pt=(MxM)
 
-            if self.ind[i] == 0:
-
-                self.vt.append(self.y[i].reshape((self.p, 1)) - np.dot(self.Z, self.a[i]))
-
-                self.Ft.append(self.Z.dot(self.P[i]).dot(self.ZT) + self.H)
-
-                Finv = inv(self.Ft[i])
-
-                self.a[i] = self.a[i] + self.P[i].dot(self.ZT).dot(Finv).dot(self.vt[i])
-
-                self.P[i] = self.P[i] - self.P[i].dot(self.ZT).dot(Finv).dot(self.Z).dot(self.P[i])
-
-                self.a.append(self.T.dot(self.a[i]))
-
-                self.P.append(self.T.dot(self.P[i]).dot(self.TT) + self.R.dot(self.Q).dot(self.RT))
-
-                self.yhat.append(self.Z.dot(self.a[i]))
+            # if self.ind[i] == 0:
+            #
+            #     self.vt.append(self.y[i].reshape((self.p, 1)) - np.dot(self.Z, self.a[i]))
+            #
+            #     self.Ft.append(self.Z.dot(self.P[i]).dot(self.ZT) + self.H)
+            #
+            #     Finv = inv(self.Ft[i])
+            #
+            #     self.a[i] = self.a[i] + self.P[i].dot(self.ZT).dot(Finv).dot(self.vt[i])
+            #
+            #     self.P[i] = self.P[i] - self.P[i].dot(self.ZT).dot(Finv).dot(self.Z).dot(self.P[i])
+            #
+            #     self.a.append(self.T.dot(self.a[i]))
+            #
+            #     self.P.append(self.T.dot(self.P[i]).dot(self.TT) + self.R.dot(self.Q).dot(self.RT))
+            #
+            #     self.yhat.append(self.Z.dot(self.a[i]))
 
             # elif self.ind[i] == 2:  # In case the line is all nans
             #
@@ -158,9 +168,12 @@ class KalmanFilter():
             #
             #     self.yhat.append(yhat)
 
-        self.a = pd.DataFrame(np.concatenate(self.a, axis=1)).T
-        self.yhat = pd.DataFrame(np.concatenate(self.yhat, axis=1)).T
-        self.y = pd.DataFrame(self.y)
+        if self.export is True:
+
+            # self.a = np.empty((self.n + 1, self.p + 1, self.m))
+            self.states = pd.DataFrame(self.a[:, 1, :])
+        # self.yhat = pd.DataFrame(np.concatenate(self.yhat, axis=1)).T
+        # self.y = pd.DataFrame(self.y)
 
         self.ranFilter = True
 

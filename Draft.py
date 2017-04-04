@@ -4,6 +4,7 @@ import pandas as pd
 import datetime as dt
 
 from KalmanFilter_Uni import *
+from KFUC import KFUC
 
 m = 2
 p = 4
@@ -14,7 +15,7 @@ Z = [[0.3,0.7],[0.1,0],[0.5,0.5],[0,0.3]]
 
 Z = pd.DataFrame(Z)
 
-H = pd.DataFrame(np.diag([1,2,3,4]))
+H = pd.DataFrame(np.diag([1.0,2.0,3.0,4.0]))
 
 
 T = pd.DataFrame(np.identity(2))
@@ -23,8 +24,8 @@ R = pd.DataFrame(np.identity(2))
 Q = pd.DataFrame(np.diag([0.2,0.4]))
 
 n = 1000  # sample size
-mut = [np.array([1, 10]).reshape(m, 1)]
-yt = [np.array([0, 0, 0, 0]).reshape(p, 1)]
+mut = [np.array([1.0, 10.0]).reshape(m, 1)]
+yt = [np.array([0.0, 0.0, 0.0, 0.0]).reshape(p, 1)]
 
 for i in range(0, 1000):
     temp = np.multiply(np.random.randn(m, 1), np.diag(Q).reshape((m, 1)))
@@ -46,14 +47,25 @@ for i in nny.index:
     ran = np.random.uniform(size=nny.iloc[i].shape)
     nny.iloc[i][ran < probNan] = np.nan
 
-kf = KalmanFilter(y,
-                  Z,
-                  H,
-                  T,
-                  Q,
-                  pd.DataFrame(np.array([0,0]).reshape(m,1)),
-                  pd.DataFrame(np.diag(np.array([1,1]))),
-                  R,
-                  nStates=2)
+# kf = KalmanFilter(y,
+#                   Z,
+#                   H,
+#                   T,
+#                   Q,
+#                   pd.DataFrame(np.array([0,0]).reshape(m,1)),
+#                   pd.DataFrame(np.diag(np.array([1,1]))),
+#                   R,
+#                   nStates=2)
+#
+# kf.runFilter()
 
-kf.runFilter()
+
+kf2 = KFUC(y=np.array(nny),
+              Z=np.array(Z),
+              H=np.array(H),
+              T=np.array(T),
+              Q=np.array(Q),
+              a1=np.array(pd.DataFrame(np.array([0.0,0.0]).reshape(m,1))),
+              P1=np.diag(np.array([1.0,1.0])),
+              R=np.array(R),
+             nStates=2)

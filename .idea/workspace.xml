@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18a16ee7-a1fc-4311-abf7-a157c89a401f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KFUC.pyx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/setup.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Local Level Model-1Varb-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Local Level Model-1Varb-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Draft.py" afterPath="$PROJECT_DIR$/Draft.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kalman FilterNB.ipynb" afterPath="$PROJECT_DIR$/Kalman FilterNB.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KalmanFilter.py" afterPath="$PROJECT_DIR$/KalmanFilter.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Local Level Model-1Varb.ipynb" afterPath="$PROJECT_DIR$/Local Level Model-1Varb.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MCMC_Ricardo.ipynb" afterPath="$PROJECT_DIR$/MCMC_Ricardo.ipynb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/KalmanFilter_UniCy.py" afterPath="$PROJECT_DIR$/KalmanFilter_UniCy.pyx" />
     </list>
     <ignored path="Bayesian Econometrics.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,8 +62,8 @@
       <file leaf-file-name="KalmanFilter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/KalmanFilter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="628">
-              <caret line="166" column="34" lean-forward="false" selection-start-line="166" selection-start-column="34" selection-end-line="166" selection-end-column="34" />
+            <state relative-caret-position="441">
+              <caret line="155" column="34" lean-forward="true" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -751,8 +742,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/KalmanFilter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="628">
-          <caret line="166" column="34" lean-forward="false" selection-start-line="166" selection-start-column="34" selection-end-line="166" selection-end-column="34" />
+        <state relative-caret-position="441">
+          <caret line="155" column="34" lean-forward="true" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
           <folding />
         </state>
       </provider>

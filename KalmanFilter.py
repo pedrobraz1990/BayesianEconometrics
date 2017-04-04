@@ -168,7 +168,7 @@ class KalmanFilter():
             ll += np.log(det(self.Ft[i])) +  self.vt[i].T.dot(inv(self.Ft[i])).dot(self.vt[i])
         ll = - self.n* self.p*0.5 * np.log(2*np.pi) - 0.5 * ll
         self.ll = ll[0][0]
-        return ll[0][0]
+        return np.exp(ll[0][0])
 
 #TODO Later check if any matrix multiplications always yields same result
 #TODO change i for t

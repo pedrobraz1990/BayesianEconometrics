@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18a16ee7-a1fc-4311-abf7-a157c89a401f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KalmanFilter.py" afterPath="$PROJECT_DIR$/KalmanFilter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Local Level Model-1Varb.ipynb" afterPath="$PROJECT_DIR$/Local Level Model-1Varb.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Local Level Model.ipynb" afterPath="$PROJECT_DIR$/Local Level Model.ipynb" />
     </list>
     <ignored path="Bayesian Econometrics.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,8 +61,8 @@
       <file leaf-file-name="KalmanFilter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/KalmanFilter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="155" column="34" lean-forward="true" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
+            <state relative-caret-position="339">
+              <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -349,7 +348,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3522976" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -742,8 +741,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/KalmanFilter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="155" column="34" lean-forward="true" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
+        <state relative-caret-position="339">
+          <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding />
         </state>
       </provider>

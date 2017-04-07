@@ -1449,7 +1449,7 @@ static const char __pyx_k_ndarray_is_not_C_contiguous[] = "ndarray is not C cont
 static const char __pyx_k_unknown_dtype_code_in_numpy_pxd[] = "unknown dtype code in numpy.pxd (%d)";
 static const char __pyx_k_Format_string_allocated_too_shor[] = "Format string allocated too short, see comment in numpy.pxd";
 static const char __pyx_k_Non_native_byte_order_not_suppor[] = "Non-native byte order not supported";
-static const char __pyx_k_O_SALES_Fundos_de_Mercado_Notebo[] = "O:\\SALES\\Fundos de Mercado\\Notebooks\\Bayesian Econometrics\\KalmanFilter_UniCy.pyx";
+static const char __pyx_k_O_SALES_Fundos_de_Mercado_Notebo[] = "O:\\SALES\\Fundos de Mercado\\Notebooks\\BayesianEconometrics\\KalmanFilter_UniCy.pyx";
 static const char __pyx_k_ndarray_is_not_Fortran_contiguou[] = "ndarray is not Fortran contiguous";
 static const char __pyx_k_Format_string_allocated_too_shor_2[] = "Format string allocated too short.";
 static PyObject *__pyx_n_s_DataFrame;

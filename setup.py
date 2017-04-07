@@ -4,11 +4,17 @@ from distutils.extension import Extension
 import numpy
 
 setup(
-  name = 'BaysianEconometrics Framework',
-  ext_modules = cythonize(["KFUC.pyx","KalmanFilter_UniCy.pyx",]),
+  name = 'BayesianEconometrics Framework',
+  ext_modules = cythonize([
+                          "KF.pyx",
+                            "KFMV.pyx",
+                           # "KFUC.pyx",
+                           # "KalmanFilter_UniCy.pyx",
+                           ]),
   include_dirs=[numpy.get_include()]
 )
 
 
 
 # python setup.py build_ext --inplace
+# cython -a KF.pyx

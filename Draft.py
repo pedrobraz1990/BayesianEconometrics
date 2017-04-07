@@ -4,7 +4,9 @@ import pandas as pd
 import datetime as dt
 
 from KalmanFilter_Uni import *
-from KFUC import KFUC
+# from KFUC import KF
+from KF import KalmanFilter as KF
+from KF_py import KalmanFilter as KFP
 
 m = 2
 p = 4
@@ -42,7 +44,7 @@ mut[0] = pd.DataFrame(mut[0])
 mut = pd.concat(mut, axis=1).T.reset_index(drop=True)
 
 nny = y
-probNan = 0.00
+probNan = 0.700
 for i in nny.index:
     ran = np.random.uniform(size=nny.iloc[i].shape)
     nny.iloc[i][ran < probNan] = np.nan
@@ -60,12 +62,12 @@ for i in nny.index:
 # kf.runFilter()
 
 
-kf2 = KFUC(y=np.array(nny),
+kf2 = KFP(y=np.array(nny),
               Z=np.array(Z),
               H=np.array(H),
               T=np.array(T),
               Q=np.array(Q),
-              a1=np.array(pd.DataFrame(np.array([0.0,0.0]).reshape(m,1))),
+              a1=np.array([0.0,0.0]),
               P1=np.diag(np.array([1.0,1.0])),
               R=np.array(R),
              nStates=2)

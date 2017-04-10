@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="18a16ee7-a1fc-4311-abf7-a157c89a401f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KF_py2.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/KalmanFilter_UniCy.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/KalmanFilter_UniCy.cp35-win_amd64.pyd" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Bayesian Econometrics.iml" afterPath="$PROJECT_DIR$/.idea/Bayesian Econometrics.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Draft.py" afterPath="$PROJECT_DIR$/Draft.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KF Test.ipynb" afterPath="$PROJECT_DIR$/KF Test.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KF.c" afterPath="$PROJECT_DIR$/KF.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KF.html" afterPath="$PROJECT_DIR$/KF.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KF.pyx" afterPath="$PROJECT_DIR$/KF.pyx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KFMV.c" afterPath="$PROJECT_DIR$/KFMV.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KFMV.pyx" afterPath="$PROJECT_DIR$/KFMV.pyx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kalman FilterNB.ipynb" afterPath="$PROJECT_DIR$/Kalman FilterNB.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KalmanFilter_Uni.py" afterPath="$PROJECT_DIR$/KalmanFilter_Uni.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KalmanFilter_UniCy.pyx" afterPath="$PROJECT_DIR$/KalmanFilter_UniCy.pyx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Local Level Model.ipynb" afterPath="$PROJECT_DIR$/Local Level Model.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
-    </list>
+    <list default="true" id="18a16ee7-a1fc-4311-abf7-a157c89a401f" name="Default" comment="" />
     <ignored path="Bayesian Econometrics.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -478,7 +459,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32503662" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32503662" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44948757" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="59" y="420" width="1221" height="442" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />

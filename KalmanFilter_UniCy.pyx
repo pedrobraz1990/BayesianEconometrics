@@ -59,7 +59,7 @@ def KalmanFilter(np.ndarray[DTYPE_t, ndim = 2] y,
                     K[t, i].reshape((1, m)))
             else:
                 # Setting all Z's to zeros
-                v[t, i] = np.zeros(v[t, i].shape)
+                v[t, i] = 0
                 F[t, i] = H[
                     i, i]
                 K[t, i, :] = np.zeros(K[t, i, :].shape)

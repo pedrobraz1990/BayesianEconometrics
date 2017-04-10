@@ -3,10 +3,11 @@ from numpy.linalg import inv
 import pandas as pd
 import datetime as dt
 
-from KalmanFilter_Uni import *
+# from KalmanFilter_Uni import *
+from KalmanFilter import KalmanFilter
 # from KFUC import KF
-from KF import KalmanFilter as KF
-from KF_py import KalmanFilter as KFP
+from KF_py import KalmanFilter as KF
+# from KF_py import KalmanFilter as KFP
 
 m = 2
 p = 4
@@ -49,20 +50,22 @@ for i in nny.index:
     ran = np.random.uniform(size=nny.iloc[i].shape)
     nny.iloc[i][ran < probNan] = np.nan
 
-# kf = KalmanFilter(y,
-#                   Z,
-#                   H,
-#                   T,
-#                   Q,
-#                   pd.DataFrame(np.array([0,0]).reshape(m,1)),
-#                   pd.DataFrame(np.diag(np.array([1,1]))),
-#                   R,
-#                   nStates=2)
-#
-# kf.runFilter()
+kf = KalmanFilter(y,
+                  Z,
+                  H,
+                  T,
+                  Q,
+                  pd.DataFrame(np.array([0,0]).reshape(m,1)),
+                  pd.DataFrame(np.diag(np.array([1,1]))),
+                  R,
+                  nStates=2)
+
+kf.runFilter()
+print(kf.likelihood())
+print(kf)
 
 
-kf2 = KFP(y=np.array(nny),
+kf2 = KFUC(y=np.array(nny),
               Z=np.array(Z),
               H=np.array(H),
               T=np.array(T),
@@ -71,3 +74,14 @@ kf2 = KFP(y=np.array(nny),
               P1=np.diag(np.array([1.0,1.0])),
               R=np.array(R),
              nStates=2)
+
+# kf2 = KF(y=np.array(nny),
+#               Z=np.array(Z),
+#               H=np.array(H),
+#               T=np.array(T),
+#               Q=np.array(Q),
+#               a1=np.array([0.0,0.0]),
+#               P1=np.diag(np.array([1.0,1.0])),
+#               R=np.array(R),
+#              nStates=2)
+# print(kf2)

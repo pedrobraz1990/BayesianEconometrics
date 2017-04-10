@@ -35,20 +35,20 @@ def KalmanFilter(double[:, :] y,
     cdef int m = nStates
 
     cdef double[:, :] yhat = np.empty((n, p), dtype=DTYPE)
-    cdef np.ndarray[int, ndim = 2] ind = np.zeros((n, p), dtype=np.int)
+    cdef np.ndarray[int, ndim = 2] ind = np.zeros((n, p), dtype=np.intc)
     cdef double[:, :] a = np.empty((m, n), dtype=DTYPE)
     cdef double[:, :, :] P = np.empty((m, m, n), dtype=DTYPE)
     a[:, 0] = a1
     P[:, :, 0] = P1
     cdef double[:, :] vt = np.zeros((n, p), dtype=DTYPE)
-    # cdef np.ndarray[int, ndim = 2] inds = np.ones((n, p), dtype=np.int)
+    # cdef np.ndarray[int, ndim = 2] inds = np.ones((n, p), dtype=np.intc)
     cdef np.ndarray inds = np.ones((n, p), dtype=np.bool)
     cdef double[:, :, :] Ft = np.empty((p, p, n), dtype=DTYPE)
     cdef double[:, :] ZT = Z.T  # To avoid transposing it several times
     cdef double[:, :] TT = T.T  # To avoid transposing it several times
     cdef double[:, :] RT = R.T
 
-    cdef np.ndarray[int, ndim = 1] dims = np.ones((n), dtype=np.int)
+    cdef np.ndarray[int, ndim = 1] dims = np.ones((n), dtype=np.intc)
     dims = dims * p
 
     # # y should be (n x p)

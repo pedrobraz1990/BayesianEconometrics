@@ -8,47 +8,51 @@ cimport cython
 from libcpp cimport bool
 
 DTYPE = np.float64
+DTYPEI = np.int
+
+ctypedef np.float64_t DTYPE_t
+ctypedef np.int_t DTYPEI_t
 
 @cython.boundscheck(False) # turn off bounds-checking for entire function
 @cython.wraparound(False)  # turn off negative index wrapping for entire function
 @cython.nonecheck(False)
 @cython.cdivision(True)
 
-# cdef float KalmanFilter(np.ndarray[double, ndim = 2] y,
-def KalmanFilter(np.ndarray[double, ndim = 2] y,
-                int nStates,
-                np.ndarray[double, ndim = 2] Z,
-                np.ndarray[double, ndim = 2] H,
-                np.ndarray[double, ndim = 2] T,
-                np.ndarray[double, ndim = 2] Q,
-                np.ndarray[double, ndim = 1] a1,
-                np.ndarray[double, ndim = 2] P1,
-                np.ndarray[double, ndim = 2] R):
+# cdef float KalmanFilter(np.ndarray[DTYPE_t, ndim = 2] y,
+def KalmanFilter(np.ndarray[DTYPE_t, ndim = 2] y,
+                DTYPEI_t nStates,
+                np.ndarray[DTYPE_t, ndim = 2] Z,
+                np.ndarray[DTYPE_t, ndim = 2] H,
+                np.ndarray[DTYPE_t, ndim = 2] T,
+                np.ndarray[DTYPE_t, ndim = 2] Q,
+                np.ndarray[DTYPE_t, ndim = 1] a1,
+                np.ndarray[DTYPE_t, ndim = 2] P1,
+                np.ndarray[DTYPE_t, ndim = 2] R):
 # def KalmanFilter(y, nStates, Z, H, T, Q, a1, P1, R):
 
 
-    cdef int t, dim
-    cdef double ll = 0
+    cdef DTYPEI_t t, dim
+    cdef DTYPE_t ll = 0
 
-    cdef int p = y.shape[1]
-    cdef int n = y.shape[0]
-    cdef int m = nStates
+    cdef DTYPEI_t p = y.shape[1]
+    cdef DTYPEI_t n = y.shape[0]
+    cdef DTYPEI_t m = nStates
 
-    cdef np.ndarray[double, ndim = 2] yhat = np.empty((n, p), dtype=DTYPE)
-    cdef np.ndarray[int, ndim = 2] ind = np.zeros((n, p), dtype=np.int)
-    cdef np.ndarray[double, ndim = 2] a = np.empty((m, n), dtype=DTYPE)
-    cdef np.ndarray[double, ndim = 3] P = np.empty((m, m, n), dtype=DTYPE)
+    cdef np.ndarray[DTYPE_t, ndim = 2] yhat = np.empty((n, p), dtype=DTYPE)
+    cdef np.ndarray[DTYPEI_t, ndim = 2] ind = np.zeros((n, p), dtype=DTYPEI)
+    cdef np.ndarray[DTYPE_t, ndim = 2] a = np.empty((m, n), dtype=DTYPE)
+    cdef np.ndarray[DTYPE_t, ndim = 3] P = np.empty((m, m, n), dtype=DTYPE)
     a[:, 0] = a1
     P[:, :, 0] = P1
-    cdef np.ndarray[double, ndim = 2] vt = np.zeros((n, p), dtype=DTYPE)
-    # cdef np.ndarray[int, ndim = 2] inds = np.ones((n, p), dtype=np.int)
+    cdef np.ndarray[DTYPE_t, ndim = 2] vt = np.zeros((n, p), dtype=DTYPE)
+    # cdef np.ndarray[DTYPEI_t, ndim = 2] inds = np.ones((n, p), dtype=np.intc)
     cdef np.ndarray inds = np.ones((n, p), dtype=np.bool)
-    cdef np.ndarray[double, ndim = 3] Ft = np.empty((p, p, n), dtype=DTYPE)
-    cdef np.ndarray[double, ndim = 2] ZT = Z.T  # To avoid transposing it several times
-    cdef np.ndarray[double, ndim = 2] TT = T.T  # To avoid transposing it several times
-    cdef np.ndarray[double, ndim = 2] RT = R.T
+    cdef np.ndarray[DTYPE_t, ndim = 3] Ft = np.empty((p, p, n), dtype=DTYPE)
+    cdef np.ndarray[DTYPE_t, ndim = 2] ZT = Z.T  # To avoid transposing it several times
+    cdef np.ndarray[DTYPE_t, ndim = 2] TT = T.T  # To avoid transposing it several times
+    cdef np.ndarray[DTYPE_t, ndim = 2] RT = R.T
 
-    cdef np.ndarray[int, ndim = 1] dims = np.ones((n), dtype=np.int)
+    cdef np.ndarray[DTYPEI_t, ndim = 1] dims = np.ones((n), dtype=DTYPEI)
     dims = dims * p
 
     # # y should be (n x p)

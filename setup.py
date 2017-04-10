@@ -9,7 +9,7 @@ setup(
                           "KF.pyx",
                             "KFMV.pyx",
                            # "KFUC.pyx",
-                           # "KalmanFilter_UniCy.pyx",
+                           "KalmanFilter_UniCy.pyx",
                            ]),
   include_dirs=[numpy.get_include()]
 )
@@ -17,4 +17,7 @@ setup(
 
 
 # python setup.py build_ext --inplace
-# cython -a KF.pyx
+# cython -a KalmanFilter_UniCy.pyx
+
+# python -m cProfile -o program.prof Draft.py
+# snakeviz program.prof
